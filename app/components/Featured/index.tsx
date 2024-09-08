@@ -10,6 +10,7 @@ interface DataType {
     imgSrc: string;
 }
 
+
 const postData: DataType[] = [
     {
         heading: 'Brand design for a computer brand.',
@@ -55,6 +56,7 @@ function SamplePrevArrow(props: { className: any; style: any; onClick: any; }) {
 
 
 export default class MultipleItems extends Component {
+    
 
     render() {
         const settings = {
