@@ -3,9 +3,13 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
 
+interface ContactusformProps {
+    openFormModal?: boolean;
+    onSubmit: () => void;
+}
 
-const Contactusform = () => {
-    let [isOpen, setIsOpen] = useState(false)
+const Contactusform: React.FC<ContactusformProps> = ({openFormModal = false, onSubmit}) => {
+    let [isOpen, setIsOpen] = useState(openFormModal)
 
     const [inputValues, setInputValues] = useState({
         input1: '',
@@ -21,6 +25,8 @@ const Contactusform = () => {
     const handleClick = () => {
         alert(`Name: ${inputValues.input1}, Email-address: ${inputValues.input2}, Message: ${inputValues.input3}`);
         setIsOpen(false)
+        onSubmit()
+        
     }
 
     // FORM SUBMIT
@@ -33,6 +39,7 @@ const Contactusform = () => {
 
 
     const closeModal = () => {
+        onSubmit()
         setIsOpen(false)
     }
 
@@ -84,7 +91,7 @@ const Contactusform = () => {
 
                                     <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
                                         <div className="flex flex-shrink-0 items-center justify-center">
-                                            <Link href="/" className='text-2xl sm:text-4xl font-semibold text-black'>
+                                            <Link href="/" className='text-2xl sm:text-4xl font-semibold text-black text-center'>
                                                 Techville Nigeria Limited
                                             </Link>
                                         </div>

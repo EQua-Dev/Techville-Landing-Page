@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Contactusform from "./Contactus";
 
@@ -21,6 +21,7 @@ function classNames(...classes: string[]) {
 }
 
 const Data = () => {
+    const [openContactUsForm, setOpenContactUsForm] = useState<boolean>(false)
     return (
         <div className="rounded-md max-w-sm w-full mx-auto">
             <div className="flex-1 space-y-4 py-1">
@@ -40,10 +41,15 @@ const Data = () => {
                             </Link>
                         ))}
                         <div className="mt-4"></div>
-                        <button className="bg-navyblue w-full hover:text-white text-white border border-purple font-medium py-2 px-4 rounded">
+                        <button className="bg-navyblue w-full hover:text-white text-white border border-purple font-medium py-2 px-4 rounded" onClick={() => {
+                            setOpenContactUsForm(true)
+                        }}>
                             Contact Us
                         </button>
-                        {/* <Contactusform /> */}
+                        {openContactUsForm && <Contactusform openFormModal={openContactUsForm} onSubmit={() => {                
+                            setOpenContactUsForm(false)
+                        }}/>}
+                        
                     </div>
                 </div>
             </div>
